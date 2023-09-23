@@ -28,7 +28,7 @@ function getUsers(users) {
 
 function getUsersForm() {
     let str = `
-        <form action="/create-user" method="POST">
+        <form action="/admin/create-user" method="POST">
             <input name="first" value="" placeholder="First Name" />
             <input name="last" value="" placeholder="Last Name" />
             <input name="job" value="" placeholder="Job or profession" />

@@ -1,57 +1,27 @@
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
-const utils = require('./utils.js');
+const {Template} = require('./utils.js');
+
+const userRoutes = require('./routes/users.js');
+const mainRoutes = require('./routes/main.js');
 
 // Server instanciations
 const app = express();
 
-// Body-parser middleware
+// 1. Body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// App variables
-const users = [];
+// 2. Server routes
+app.use('/admin/', userRoutes);
+app.use(mainRoutes);
 
-// Like a filter function
-// app.use((req, res, next) => {
-//     console.log("Filter function");
-//     next();
-// });
-
-app.get("/users", (req, res, next) => {
-    res.statusCode = 200;
+// 3. 404 Page Not Found
+app.use((req, res, next) => {
+    res.statusCode = 404;
     res.setHeader('Content-Type', 'text/html');
-    const u = utils.getUsers(users);
-    res.send(u);
-});
-
-app.get("/create-user", (req, res, next) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    const u = utils.getUsersForm();
-    res.send(u);
-});
-
-app.post("/create-user", (req, res, next) => {
-    const user = {};
-    const keys = Object.keys(req.body);
-    keys.forEach(function (key) {
-        user[key] = req.body[key];
-    });
-    users.push(user);
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    res.send(utils.Template("<h1>Added. Thanks</h1><p>Goto <a href='/users'>list</p>"))
-    return res.end();
-});
-
-// Home
-app.get("/", (req, res, next) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    const u = utils.getUsers(users);
-    res.send(u);
+    res.send(Template("<h1>Page not found</h1><p><a href='/'>Home</p>"))
 });
 
 // Start server
