@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <!-- Cambiar el menu dependiendo del usuario, puede incluso quitarse -->
+    <header class="main-header">
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item"><a class="active" href="/">Shop</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Login</h1>
+        <form action="/login" method="POST">
+            <input name="username" type="text" placeholder="username" />
+            <input name="password" type="password" placeholder="password" />
+            <input type="submit" value="Signin" />
+        </form>
+    </main>
+</body>
+</html>

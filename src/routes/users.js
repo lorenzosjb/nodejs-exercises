@@ -28,6 +28,10 @@ router.post("/create-user", (req, res, next) => {
     users.push(user);
     res.statusCode = 200;
     res.setHeader('Content-Type', 'text/html');
+    // if added then redirect to the users page
+    // if not, who to manage error
+
+
     res.send(utils.Template("<h1>Added. Thanks</h1><p>Goto <a href='/admin/users'>list</p>"))
     return res.end();
 });
