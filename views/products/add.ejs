@@ -16,9 +16,16 @@
         </nav>
     </header>
     <main>
-        <form action="/admin/add-product" method="POST">
-            <input name="title" type="text" placeholder="Title" />
-            <input type="submit" value="Add Product" />
+        <form action="/admin/create-product" method="POST">
+            <p>
+                <input name="name" value="" placeholder="Name" />
+            </p>
+            <p>
+                <input name="quantity" value="0" placeholder="Quantity" />
+            </p>
+            <p>
+                <input type="submit" value="Add Product" />
+            </p>
         </form>
     </main>
 </body>

@@ -1,25 +1,40 @@
-require('dotenv').config(); 
+/* 
+ * APP
+ */
 
+require('dotenv').config(); 
 const http = require('http');
 const path = require('path');
+
+/*
+ * Middleware configuration
+ */
+
 const express = require('express');
 const bodyParser = require('body-parser');
-
-const userRoutes = require('./routes/users.js');
-const mainRoutes = require('./routes/main.js');
-
-// Server instanciations
 const app = express();
 
-// 1. Body-parser middleware
+app.set("view engine", "ejs");
+app.set("views", "views");
+
 app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "..", 'public')));
 
-// 2. Server routes
-app.use('/admin/', userRoutes);
+/*
+ * Routes 
+ */
+
+const userRoutes = require('./routes/users.js');
+const productRoutes = require('./routes/products.js');
+const mainRoutes = require('./routes/main.js');
+
+app.use('/user/', userRoutes);
+app.use('/products/', productRoutes);
 app.use(mainRoutes);
 
-// Start server
+/*
+ * Start the server
+ */
+
 const server = http.createServer(app);
 server.listen(process.env.PORT);

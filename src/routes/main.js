@@ -1,23 +1,39 @@
 const express = require('express');
 const path = require('path');
-const {Template} = require('../utils.js');
 
 const router = express.Router();
 
-// Home
+/*
+ * Home
+ */
+
 router.get("/", (req, res, next) => {
-    res.statusCode = 200;
-    const fileName = path.join(__dirname, "..", "..", "views", "shop.html");
-    res.setHeader('Content-Type', 'text/html');
-    res.sendFile(fileName);
+    res.status(200).render("layout/index", { 
+        path: "/",
+        pageTitle: "Welcome!",
+        content: "../products/list",
+        contentData: {
+            products: []
+        }
+    });
 });
 
-// 3. 404 Page Not Found
+/*
+ * 404 Page Not Found
+ */
+
 router.use((req, res, next) => {
-    const fileName = path.join(__dirname, "..", "..", "views", "404.html");
-    res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/html');
-    res.sendFile(fileName);
+    /*
+     *  Node templating
+     *
+        const fileName = path.join(__dirname, "..", "..", "views", "404.html");
+        res.statusCode = 404;
+        res.setHeader('Content-Type', 'text/html');
+        res.sendFile(fileName);
+     *
+     */
+
+    res.status(404).render("404", { path: "/", pageTitle: "Page Not Found"  });
 });
 
 module.exports = router;
