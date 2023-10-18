@@ -58,7 +58,6 @@ router.post("/add", (req, res, next) => {
     res.redirect(301, "/products");
 });
 
-
 /*
  * Helpers
  */

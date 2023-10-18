@@ -33,3 +33,6 @@ Products
 # API
 - https://fakestoreapi.com/docs
 - https://rapidapi.com/collection/shopping-products-apis
+
+#MVC
+- https://medium.com/@livajorge7/understanding-the-mvc-architecture-in-node-js-for-robust-web-development-70ecac3341ba

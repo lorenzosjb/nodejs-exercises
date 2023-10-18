@@ -12,13 +12,14 @@ body {
   display: flex;
   flex-flow: column;
   background-color: #cecece;
+  height: 100%;
 }
 
 main {
   padding: 1rem;
   margin: auto;
   background-color: #ffffff;
-  min-height: calc(100dvh - 10.5rem);
+  min-height: calc(100svh - 7rem);
 }
 
 /**/
